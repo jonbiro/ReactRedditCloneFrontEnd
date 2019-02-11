@@ -1,38 +1,45 @@
-import React, { Component } from 'react'
+import React, { Component } from "react";
 import PostForm from "./PostForm";
-import PostListItem from './PostListItem'; 
+import PostListItem from "./PostListItem";
 
 export default class PostsContainer extends Component {
-state = {
-      posts: []
-    };
+  state = {
+    posts: []
+  };
 
-  
-  componentDidMount(){
-
-fetch("http://localhost:3006/posts")
-    .then(res => res.json())
-    .then( posts => {
+  componentDidMount() {
+    fetch("http://localhost:3006/posts")
+      .then(res => res.json())
+      .then(posts => {
         this.setState({
-            posts: posts
-        })
-    })
+          posts: posts
+        });
+      });
+  }
+
+  newPost = postObj => {
+    this.setState({ posts: [...this.state.posts, postObj] });
   };
 
   render() {
-    const posts = this.state.posts.map((post) => <PostListItem title={post.title} votes={post.votes} key={post.id} postId={post.id} />)
+    const posts = this.state.posts.map(post => (
+      <PostListItem
+        title={post.title}
+        votes={post.votes}
+        key={post.id}
+        postId={post.id}
+      />
+    ));
 
     return (
-        <div>
-            <div className="posts">
-              <ul>
-                {posts}
-              </ul>
-            </div>
-            <div className="sideContainer">
-                <PostForm create={true} />
-            </div>
+      <div>
+        <div className="posts">
+          <ul>{posts}</ul>
         </div>
-    )
+        <div className="sideContainer">
+          <PostForm create={true} newPost={this.newPost} />
+        </div>
+      </div>
+    );
   }
 }

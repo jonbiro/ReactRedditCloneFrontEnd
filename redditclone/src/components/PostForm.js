@@ -1,15 +1,11 @@
 import React, { Component } from "react";
-
-export default class PostForm extends Component {
-  constructor() {
-    super();
-
-    this.state = {
-      title: "",
-      content: "",
-      votes: 0
-    };
-  }
+import { withRouter } from "react-router";
+class PostForm extends Component {
+  state = {
+    title: "",
+    content: "",
+    votes: 0
+  };
 
   handleChange = e => {
     e.preventDefault();
@@ -18,8 +14,8 @@ export default class PostForm extends Component {
 
   handleOnSubmit = e => {
     e.preventDefault();
+    e.persist();
     if (this.props.create) {
-      //do ajax to create post
       fetch("http://localhost:3006/posts", {
         method: "POST",
         headers: {
@@ -30,27 +26,31 @@ export default class PostForm extends Component {
           content: e.target.content.value,
           votes: 0
         })
-      }); //.then(//add post to page dom)
-    } else {
-      //do ajax to edit post
-      //edit post within dom
-      this.props.updatePost(this.state);
-      {
-        fetch(`http://localhost:3006/posts/${this.props.match.params.id}`, {
-          method: "PATCH",
-          headers: {
-            "Content-Type": "application/json"
-          },
-          body: JSON.stringify({
-            title: e.target.title.value,
-            content: e.target.content.value
-
-          })
+      })
+        .then(res => res.json())
+        .then(res => {
+          this.props.newPost(res);
+          this.emptyForm();
         });
-      }
+      // this.props.history.push("/")
+    } else {
+      this.props.updatePost(this.state);
+
+      fetch(`http://localhost:3006/posts/${this.props.match.params.id}`, {
+        method: "PATCH",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          title: e.target.title.value,
+          content: e.target.content.value
+        })
+      }).then(() => {
+        this.props.history.push("/");
+      });
     }
 
-    this.emptyForm();
+    // this.emptyForm();
   };
 
   emptyForm = () => {
@@ -58,7 +58,7 @@ export default class PostForm extends Component {
   };
 
   render() {
-      console.log(this.props)
+    console.log(this.props);
     return (
       <div>
         <h3>{this.props.create ? "Create" : "Edit"} Post:</h3>
@@ -85,3 +85,4 @@ export default class PostForm extends Component {
     );
   }
 }
+export default withRouter(PostForm);
