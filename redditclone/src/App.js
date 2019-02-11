@@ -11,7 +11,7 @@ class App extends Component {
         <div className="App">
           <Switch>
             <Route exact path='/' component={PostsContainer} />
-            <Route path='/posts/:id' component={Post} />
+            <Route path='/posts/:id' render={(routerProps)=> <Post {...routerProps}/>} />
             <Route path='/posts' component={PostsContainer} />
           </Switch>
         </div>
