@@ -36,8 +36,7 @@ export default class Post extends Component {
           <h2>{this.state.posts.title}</h2>
           <p>{this.state.posts.content}</p>
           <p>
-            <span role="img">⬆️</span>️ {this.state.posts.votes}{" "}
-            <span role="img">⬇️</span>{" "}
+            Votes:️ {this.state.posts.votes}
           </p>
         </div>
         <div className="editForm">
@@ -49,7 +48,7 @@ export default class Post extends Component {
         </div>
         <br />
         <div className="deleteButton">
-          <button onClick={this.handleDelete}>Delete Me</button>
+          <button onClick={this.handleDelete}>Delete Post</button>
         </div>
       </div>
     );

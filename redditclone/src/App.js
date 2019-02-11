@@ -3,13 +3,10 @@ import './App.css';
 import PostsContainer from './components/PostsContainer';
 import Post from './components/Post';
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import Search from "./components/Search";
 
 class App extends Component {
   render() {
     return (
-        <div>
-            <Search/>
       <Router>
         <div className="App">
           <Switch>
@@ -22,7 +19,6 @@ class App extends Component {
           </Switch>
         </div>
       </Router>
-        </div>
     );
   }
 }
