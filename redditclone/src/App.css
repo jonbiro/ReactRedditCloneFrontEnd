@@ -65,9 +65,9 @@ body {
     width: 100vw;
     height: 100vh;
     font-family: 'Open Sans', sans-serif;
-    background: linear-gradient(180deg, #add8e6, #e0ffff);
+    background: linear-gradient(180deg, lightgreen, #add8e6);
     background-size: 400% 400%;
-    animation: backgroundGradient 30s ease infinite;
+    animation: backgroundGradient 1500s ease infinite;
 }
 h1, h2, h3, h4 {
     font-family: 'Roboto', sans-serif;
@@ -112,4 +112,27 @@ button:focus {
 
 button:active {
     transform: scale(0.99);
+}
+a:hover {
+    text-decoration: underline;
+}
+a {
+    color: red;
+    font-family: helvetica;
+    text-decoration: none;
+}
+a {
+    color: #0000ee;
+    display: inline-block;
+    position: relative;
+    text-decoration: none;
+}
+a:before {
+    background-color: #0000ee;
+    content: '';
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    transition: width 0.3s ease-in-out;
+    width: 100%;
 }

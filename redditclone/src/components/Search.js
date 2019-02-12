@@ -3,7 +3,8 @@ import React from "react";
 class Search extends React.Component {
   render() {
     return (
-      <div><br/>
+      <div>
+        <br />
         <section className="search-form">
           <input
             onChange={this.props.filterPosts}
@@ -12,7 +13,8 @@ class Search extends React.Component {
             name="search"
             placeholder="Search By Title"
           />
-        </section><br/>
+        </section>
+        <br />
       </div>
     );
   }
