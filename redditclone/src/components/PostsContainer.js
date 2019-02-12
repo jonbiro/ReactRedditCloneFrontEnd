@@ -75,6 +75,7 @@ export default class PostsContainer extends Component {
     const posts = this.filteredPosts().map(post => (
       <PostListItem
         title={post.title}
+        content={post.content}
         votes={post.votes}
         key={post.id}
         postId={post.id}

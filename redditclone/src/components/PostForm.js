@@ -58,7 +58,7 @@ class PostForm extends Component {
     // console.log(this.props);
     return (
       <div>
-        <h3>{this.props.create ? "Create" : "Edit"} Post:</h3>
+        <h2>{this.props.create ? "Create" : "Edit"} Post:</h2>
 
         <form onSubmit={this.handleOnSubmit}>
           <input

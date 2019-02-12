@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import PostForm from "./PostForm";
+import { Link } from "react-router-dom";
+
 
 export default class Post extends Component {
   state = {
@@ -29,15 +31,14 @@ export default class Post extends Component {
   };
 
   render() {
-    // console.log(this.props);
     return (
       <div>
         <div className="post">
             <br/>
           <h2>{this.state.posts.title}</h2>
-          <p>{this.state.posts.content}</p>
+          <h3>{this.state.posts.content}</h3>
             <br/>
-            <h3>Votes:️ {this.state.posts.votes}</h3>
+            <h2>Votes:️ {this.state.posts.votes}</h2>
 
 
         </div>
@@ -53,6 +54,9 @@ export default class Post extends Component {
         <div className="deleteButton">
           <button onClick={this.handleDelete}>Delete Post</button>
         </div>
+          <div>
+              <Link to={'/'}> <button>Go Back Home</button></Link>
+          </div>
       </div>
     );
   }
