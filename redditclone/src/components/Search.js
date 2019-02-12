@@ -1,13 +1,13 @@
 import React from "react";
 
-class Search extends React.Component {
-  render() {
+const Search = (props) =>
+   {
     return (
       <div><br/>
         <section className="search-form">
           <input
-            onChange={this.props.filterPosts}
-            value={this.props.searchTerm}
+            onChange={props.filterPosts}
+            value={props.searchTerm}
             type="text"
             name="search"
             placeholder="Search By Title"
@@ -15,7 +15,6 @@ class Search extends React.Component {
         </section><br/>
       </div>
     );
-  }
-}
+  };
 
 export default Search;
