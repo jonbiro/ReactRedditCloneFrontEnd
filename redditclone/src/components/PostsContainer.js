@@ -10,7 +10,7 @@ export default class PostsContainer extends Component {
   };
 
   componentDidMount() {
-    fetch("http://localhost:3006/posts")
+    fetch("http://localhost:3000/posts")
       .then(res => res.json())
       .then(posts => {
         this.setState({
@@ -40,7 +40,7 @@ export default class PostsContainer extends Component {
   };
 
   upFunc = (postId, voteNum) => {
-    fetch(`http://localhost:3006/posts/${postId}`, {
+    fetch(`http://localhost:3000/posts/${postId}`, {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json"
@@ -56,7 +56,7 @@ export default class PostsContainer extends Component {
   };
 
   downFunc = (postId, voteNum) => {
-    fetch(`http://localhost:3006/posts/${postId}`, {
+    fetch(`http://localhost:3000/posts/${postId}`, {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json"
