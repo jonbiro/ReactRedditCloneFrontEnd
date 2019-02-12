@@ -16,6 +16,7 @@ class App extends Component {
               render={routerProps => <Post {...routerProps} />}
             />
             <Route path="/posts" component={PostsContainer} />
+            <Route path="/*" component={PostsContainer} />
           </Switch>
         </div>
       </Router>

@@ -32,7 +32,6 @@ class PostForm extends Component {
           this.props.newPost(res);
           this.emptyForm();
         });
-      // this.props.history.push("/")
     } else {
       this.props.updatePost(this.state);
 
@@ -49,8 +48,6 @@ class PostForm extends Component {
         this.props.history.push("/");
       });
     }
-
-    // this.emptyForm();
   };
 
   emptyForm = () => {
@@ -58,7 +55,7 @@ class PostForm extends Component {
   };
 
   render() {
-    console.log(this.props);
+    // console.log(this.props);
     return (
       <div>
         <h3>{this.props.create ? "Create" : "Edit"} Post:</h3>
@@ -72,14 +69,15 @@ class PostForm extends Component {
             placeholder="Title"
           />
           <br />
-          <textarea
+          <input
             name="content"
+            type="text"
             onChange={this.handleChange}
             value={this.state.content}
             placeholder="Content"
           />
           <br />
-          <input type="submit" />
+          <input type="submit" className="button" />
         </form>
       </div>
     );

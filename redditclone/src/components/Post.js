@@ -29,17 +29,20 @@ export default class Post extends Component {
   };
 
   render() {
-    console.log(this.props);
+    // console.log(this.props);
     return (
       <div>
         <div className="post">
+            <br/>
           <h2>{this.state.posts.title}</h2>
           <p>{this.state.posts.content}</p>
-          <p>
-            Votes:️ {this.state.posts.votes}
-          </p>
+            <br/>
+            <h3>Votes:️ {this.state.posts.votes}</h3>
+
+
         </div>
         <div className="editForm">
+            <br/>
           <PostForm
             create={false}
             updatePost={this.updatePost}

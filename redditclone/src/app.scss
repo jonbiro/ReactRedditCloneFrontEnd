@@ -1,0 +1,110 @@
+$f-title:'Roboto', sans-serif;
+$f-body:'Open Sans', sans-serif;
+
+@mixin centre($axis: "both") {
+  position: absolute;
+  @if $axis == "y" {
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+    -moz-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    -o-transform: translateY(-50%);
+    transform: translateY(-50%);
+  }
+  @if $axis == "x" {
+    left: 50%;
+    -webkit-transform: translateX(-50%);
+    -moz-transform: translateX(-50%);
+    -ms-transform: translateX(-50%);
+    -o-transform: translateX(-50%);
+    transform: translateX(-50%);
+  }
+  @if $axis == "both" {
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-51%, -50%);
+    -moz-transform: translate(-51%, -50%);
+    -ms-transform: translate(-51%, -50%);
+    -o-transform: translate(-51%, -50%);
+    transform: translate(-51%, -50%);
+  }
+}
+@mixin font-size($sizeValue: 1.6, $lineHeight: 2.4) {
+  font-size: ($sizeValue * 10) + px;
+  font-size: $sizeValue + rem;
+  line-height: ($lineHeight * 10) + px;
+}
+@mixin fontawesome {
+  display: inline-block;
+  font: normal normal normal 14px/1 FontAwesome;
+  font-size: inherit;
+  text-rendering: auto;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+@keyframes backgroundGradient {
+  0%{background-position:50% 0%}
+  50%{background-position:50% 100%}
+  100%{background-position:50% 0%}
+}
+
+@keyframes loadBounce {
+  0%{transform:translate(-50%, -50%) scale(0);}
+  40%{transform:translate(-50%, -50%) scale(1.2);}
+  60%{transform:translate(-50%, -50%) scale(1);}
+  80%{transform:translate(-50%, -50%) scale(1.1);}
+  100%{transform:translate(-50%, -50%) scale(1);}
+}
+
+
+body{
+  margin:0;
+  padding:0;
+  width:100vw;
+  height:100vh;
+  font-family:$f-body;
+  background: linear-gradient(180deg, #111, #00393c);
+  background-size: 400% 400%;
+  animation: backgroundGradient 30s ease infinite;
+}
+
+h1, h2, h3, h4{
+  font-family:$f-title;
+  font-weight:900;
+  color:#fff;
+}
+
+p{
+  @include font-size(1.8, 2.6);
+}
+
+.m-linkitem{
+  @include centre();
+  max-width:500px;
+  width:100%;
+  // text-align:center;
+  transform-origin:center;
+  animation: loadBounce 0.5s ease-in-out forwards;
+
+  a{
+    transition:all 1s linear;
+    display:inline;
+    @include font-size(2.2, 4.5);
+    color:#fff;
+    text-decoration:none;
+    text-transform:uppercase;
+    font-weight:600;
+    padding-bottom:5px;
+    background: linear-gradient(to right, rgba(0,209,177,1) 0%,rgba(39,143,198,1) 98%);
+    background-size:0px 2px;
+    background-repeat: no-repeat;
+    background-position:left 85%;
+    text-shadow:0;
+
+    &:hover{
+      background-size:100% 2px;
+      text-shadow:0 2.5px 4px rgba(0,0,0,0.5);
+    }
+  }
+}

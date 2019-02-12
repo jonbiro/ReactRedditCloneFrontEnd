@@ -3,15 +3,16 @@ import React from "react";
 class Search extends React.Component {
   render() {
     return (
-      <div>
+      <div><br/>
         <section className="search-form">
           <input
             onChange={this.props.filterPosts}
             value={this.props.searchTerm}
             type="text"
-            placeholder="Search by title"
+            name="search"
+            placeholder="Search By Title"
           />
-        </section>
+        </section><br/>
       </div>
     );
   }
