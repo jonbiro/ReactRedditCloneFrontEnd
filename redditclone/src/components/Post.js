@@ -9,7 +9,7 @@ export default class Post extends Component {
   };
   componentDidMount() {
     const id = this.props.match.params.id;
-    fetch(`http://localhost:3000/posts/${id}`)
+    fetch(`https://redditclonebackend.herokuapp.com/posts/${id}`)
       .then(res => res.json())
       .then(posts => {
         this.setState({
@@ -23,7 +23,7 @@ export default class Post extends Component {
   };
 
   handleDelete = () => {
-    return fetch(`http://localhost:3000/posts/${this.props.match.params.id}`, {
+    return fetch(`https://redditclonebackend.herokuapp.com/posts/${this.props.match.params.id}`, {
       method: "DELETE"
     }).then(() => {
       this.props.history.push("/");
