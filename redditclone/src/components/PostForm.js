@@ -16,7 +16,7 @@ class PostForm extends Component {
     e.preventDefault();
     e.persist();
     if (this.props.create) {
-      fetch("http://localhost:3000/posts", {
+      fetch("https://redditclonebackend.herokuapp.com/posts", {
         method: "POST",
         headers: {
           "Content-Type": "application/json"
@@ -35,7 +35,7 @@ class PostForm extends Component {
     } else {
       this.props.updatePost(this.state);
 
-      fetch(`http://localhost:3000/posts/${this.props.match.params.id}`, {
+      fetch(`https://redditclonebackend.herokuapp.com/posts/${this.props.match.params.id}`, {
         method: "PATCH",
         headers: {
           "Content-Type": "application/json"
